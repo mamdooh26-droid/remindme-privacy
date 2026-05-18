@@ -235,18 +235,23 @@
     /* ── Steps ─────────────────────────────────────────────────────── */
     .steps { display: flex; flex-direction: column; }
 
+    /* Flexbox row: in RTL the browser automatically reverses the row direction,
+       so step-num-col (first DOM child) lands on the RIGHT and step-content on
+       the LEFT — without relying on CSS Grid RTL column reversal, which is
+       unreliable on mobile Safari. */
     .step {
-      display: grid;
-      grid-template-columns: 52px 1fr;
-      gap: 0 24px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 24px;
       position: relative;
     }
 
-    /* RTL: first column is on the right, connector line centered in 52px number column */
+    /* Connector line: centred inside the 52px number column on the right */
     .step:not(:last-child)::after {
       content: '';
       position: absolute;
-      right: 25px;
+      right: 26px;
       top: 52px;
       bottom: -1px;
       width: 2px;
@@ -254,6 +259,7 @@
     }
 
     .step-num-col {
+      flex: 0 0 52px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -273,6 +279,8 @@
     }
 
     .step-content {
+      flex: 1;
+      min-width: 0;
       padding: 0 0 56px;
     }
 
