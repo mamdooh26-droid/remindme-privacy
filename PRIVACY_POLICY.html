@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RemindMe — Privacy Policy</title>
+  <style>
+    /* ── Reset ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --apple-blue:    #0071E3;
+      --text:          #1D1D1F;
+      --secondary:     #6E6E73;
+      --sep:           #D2D2D7;
+      --bg-alt:        #F5F5F7;
+      --white:         #FFFFFF;
+      --note-bg:       #F0F6FF;
+      --note-border:   #0071E3;
+      --green-bg:      #F0FFF4;
+      --green-border:  #34C759;
+      --warn-bg:       #FFF8EC;
+      --warn-border:   #FF9F0A;
+      --font:          -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+      --max:           780px;
+      --radius:        18px;
+      --radius-sm:     10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: rgba(0,113,227,.2); }
+
+    a { color: var(--apple-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    img { max-width: 100%; display: block; }
+
+    /* ── Nav ───────────────────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      height: 48px;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,.12);
+      display: flex; align-items: center;
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-brand { font-size: 17px; font-weight: 600; color: var(--text); white-space: nowrap; }
+    .nav-sep { color: var(--sep); margin: 0 4px; font-size: 18px; }
+
+    .nav-links { display: flex; gap: 2px; overflow: hidden; }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--secondary);
+      padding: 5px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(0,113,227,.08);
+      color: var(--apple-blue);
+      text-decoration: none;
+    }
+
+    /* ── Hero ──────────────────────────────────────────────────────── */
+    .hero {
+      background: var(--white);
+      text-align: center;
+      padding: 80px 24px 72px;
+      border-bottom: 1px solid var(--sep);
+    }
+
+    .hero-eyebrow {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--apple-blue);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.05;
+      margin-bottom: 18px;
+      color: var(--text);
+    }
+
+    .hero .subtitle {
+      font-size: clamp(17px, 2.5vw, 22px);
+      color: var(--secondary);
+      max-width: 540px;
+      margin: 0 auto 32px;
+      line-height: 1.45;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--sep);
+      border-radius: 24px;
+      padding: 8px 20px;
+      font-size: 14px;
+      color: var(--secondary);
+    }
+
+    /* ── Summary cards ─────────────────────────────────────────────── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--sep);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .summary-card {
+      background: var(--white);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .summary-card .sc-icon { font-size: 28px; margin-bottom: 10px; }
+    .summary-card .sc-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .summary-card .sc-body { font-size: 13px; color: var(--secondary); line-height: 1.5; }
+
+    /* ── Section wrapper ───────────────────────────────────────────── */
+    .section {
+      padding: 72px 24px;
+      border-bottom: 1px solid var(--sep);
+    }
+
+    .section.alt { background: var(--bg-alt); }
+
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--apple-blue);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .section-lead {
+      font-size: 18px;
+      color: var(--secondary);
+      line-height: 1.55;
+      margin-bottom: 36px;
+    }
+
+    /* ── Content ───────────────────────────────────────────────────── */
+    .content-h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -.2px;
+      margin: 32px 0 10px;
+    }
+
+    .content-p {
+      font-size: 16px;
+      color: var(--secondary);
+      margin-bottom: 12px;
+      line-height: 1.65;
+    }
+
+    .content-ul {
+      padding-left: 20px;
+      margin: 8px 0 16px;
+    }
+
+    .content-ul li {
+      font-size: 16px;
+      color: var(--secondary);
+      line-height: 1.7;
+      margin-bottom: 4px;
+    }
+
+    .content-ul li strong { color: var(--text); }
+
+    /* ── Note boxes ────────────────────────────────────────────────── */
+    .note {
+      background: var(--note-bg);
+      border-left: 3px solid var(--note-border);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 15px;
+      color: #1a3a6e;
+      line-height: 1.55;
+    }
+
+    .note.green {
+      background: var(--green-bg);
+      border-left-color: var(--green-border);
+      color: #1a5c2e;
+    }
+
+    .note.warn {
+      background: var(--warn-bg);
+      border-left-color: var(--warn-border);
+      color: #7a4800;
+    }
+
+    /* ── Permission table ──────────────────────────────────────────── */
+    .tbl-wrap { overflow-x: auto; margin: 20px 0; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+
+    thead th {
+      background: var(--bg-alt);
+      padding: 11px 16px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--secondary);
+      border-bottom: 1px solid var(--sep);
+    }
+
+    tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--sep);
+      color: var(--text);
+      vertical-align: top;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: rgba(0,113,227,.03); }
+
+    /* ── TOC ───────────────────────────────────────────────────────── */
+    .toc {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .toc-item {
+      background: var(--bg-alt);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      transition: background .15s;
+    }
+
+    .toc-item:hover {
+      background: rgba(0,113,227,.1);
+      color: var(--apple-blue);
+      text-decoration: none;
+    }
+
+    .toc-num {
+      font-size: 11px; font-weight: 700;
+      color: var(--apple-blue);
+      background: rgba(0,113,227,.1);
+      border-radius: 4px;
+      padding: 2px 6px;
+      min-width: 24px; text-align: center;
+    }
+
+    /* ── Contact card ──────────────────────────────────────────────── */
+    .contact-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      border: 1px solid var(--sep);
+    }
+
+    .contact-card .cc-icon { font-size: 36px; margin-bottom: 12px; }
+    .contact-card .cc-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .contact-card .cc-body { font-size: 15px; color: var(--secondary); line-height: 1.6; margin-bottom: 16px; }
+
+    /* ── Footer ────────────────────────────────────────────────────── */
+    footer {
+      background: #F5F5F7;
+      border-top: 1px solid var(--sep);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: var(--secondary);
+    }
+
+    footer p { margin-bottom: 4px; }
+
+    /* ── Responsive ────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .summary-grid { grid-template-columns: 1fr; }
+      .toc { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 400px) {
+      .toc { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">RemindMe</span>
+    <span class="nav-sep">›</span>
+    <div class="nav-links">
+      <a href="#collection">Data Collection</a>
+      <a href="#location">Location</a>
+      <a href="#notifications">Notifications</a>
+      <a href="#storage">Storage</a>
+      <a href="#sharing">Sharing</a>
+      <a href="#rights">Your Rights</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-eyebrow">Privacy Policy</div>
+  <h1>Your data stays on your device.</h1>
+  <p class="subtitle">RemindMe does not collect, transmit, or store any personal data on external servers. Everything stays on your iPhone.</p>
+  <div class="hero-badge">🔒 Last updated: May 2026</div>
+</section>
+
+<!-- At-a-glance -->
+<div style="background: var(--bg-alt); border-bottom: 1px solid var(--sep);">
+  <div style="max-width: var(--max); margin: 0 auto; padding: 40px 24px;">
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="sc-icon">📍</div>
+        <div class="sc-title">Location — On Device</div>
+        <div class="sc-body">Used only to trigger geofence alerts. Never transmitted anywhere.</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-icon">🔔</div>
+        <div class="sc-title">Notifications — Local Only</div>
+        <div class="sc-body">All alerts are generated on-device. No push notification servers.</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-icon">🚫</div>
+        <div class="sc-title">No Tracking. Ever.</div>
+        <div class="sc-body">No analytics, no advertising IDs, no third-party SDKs.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div style="background: var(--bg-alt); border-bottom: 1px solid var(--sep);">
+  <div class="toc">
+    <a href="#collection" class="toc-item"><span class="toc-num">01</span> Data Collection</a>
+    <a href="#location" class="toc-item"><span class="toc-num">02</span> Location Access</a>
+    <a href="#notifications" class="toc-item"><span class="toc-num">03</span> Notifications</a>
+    <a href="#storage" class="toc-item"><span class="toc-num">04</span> Data Storage</a>
+    <a href="#sharing" class="toc-item"><span class="toc-num">05</span> Data Sharing</a>
+    <a href="#rights" class="toc-item"><span class="toc-num">06</span> Your Rights</a>
+    <a href="#children" class="toc-item"><span class="toc-num">07</span> Children</a>
+    <a href="#changes" class="toc-item"><span class="toc-num">08</span> Changes</a>
+    <a href="#contact" class="toc-item"><span class="toc-num">09</span> Contact</a>
+  </div>
+</div>
+
+<!-- Data Collection -->
+<section class="section" id="collection">
+  <div class="section-inner">
+    <div class="section-eyebrow">Data Collection</div>
+    <h2 class="section-title">We collect nothing from you.</h2>
+    <p class="section-lead">RemindMe does not collect any personal information. The app has no user accounts, no registration, and no server back-end.</p>
+
+    <div class="note green">
+      <strong>Short version:</strong> RemindMe never sends any data off your device. There is no server, no database, no account — nothing.
+    </div>
+
+    <div class="content-h3">What the app does use</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Data type</th><th>Purpose</th><th>Leaves your device?</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Location (background)</strong></td><td>Monitor geofence boundaries to trigger reminder alerts</td><td>❌ Never</td></tr>
+        <tr><td><strong>Reminder titles &amp; notes</strong></td><td>Displayed in notifications and the app list</td><td>❌ Never</td></tr>
+        <tr><td><strong>Saved place names</strong></td><td>Shown in your saved-locations library</td><td>❌ Never</td></tr>
+        <tr><td><strong>App preferences</strong></td><td>Default radius, alert type, appearance, language</td><td>❌ Never</td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="content-p">RemindMe contains <strong>no analytics SDK, no crash-reporting SDK, no advertising SDK, and no third-party frameworks</strong> that could transmit data. The only network request the app ever makes is the place-search feature, which sends your typed query to Apple's MapKit servers — the same infrastructure used by Apple Maps.</p>
+  </div>
+</section>
+
+<!-- Location -->
+<section class="section alt" id="location">
+  <div class="section-inner">
+    <div class="section-eyebrow">Location Access</div>
+    <h2 class="section-title">Location powers reminders, nothing else.</h2>
+    <p class="section-lead">RemindMe requests "Always On" location access solely to monitor the geofence boundaries you set up. It does not track your movements or build a location history.</p>
+
+    <div class="content-h3">Why "Always" access is required</div>
+    <p class="content-p">iOS geofencing only works in the background when the app has <strong>Always</strong> location permission. With "When In Use" only, iOS suspends geofence monitoring the moment you leave the app, making reminders unreliable.</p>
+    <div class="note">
+      <strong>Always access ≠ constant tracking.</strong> iOS uses low-power cell tower and Wi-Fi positioning to watch geofence boundaries. GPS is only activated when you are physically near a boundary. RemindMe receives a boundary-crossing event — not a stream of coordinates.
+    </div>
+
+    <div class="content-h3">What location data is used for</div>
+    <ul class="content-ul">
+      <li><strong>Geofence monitoring</strong> — iOS notifies the app when you enter or exit a radius you defined. The app fires a local notification and nothing else.</li>
+      <li><strong>Distance display</strong> — Your current position is used to calculate the distance to saved locations shown in the app. This calculation happens entirely on-device.</li>
+      <li><strong>Map centering</strong> — When you open the Add Reminder screen, the map centers on your location for convenience.</li>
+    </ul>
+
+    <div class="content-h3">What location data is NOT used for</div>
+    <ul class="content-ul">
+      <li>Location history or movement logs</li>
+      <li>Advertising or profiling</li>
+      <li>Any form of server upload or sharing</li>
+    </ul>
+
+    <div class="content-h3">Revoking location access</div>
+    <p class="content-p">You can change or revoke location permission at any time in <strong>iOS Settings → Privacy &amp; Security → Location Services → RemindMe</strong>. Note that reminders will stop triggering if location access is removed.</p>
+  </div>
+</section>
+
+<!-- Notifications -->
+<section class="section" id="notifications">
+  <div class="section-inner">
+    <div class="section-eyebrow">Notifications</div>
+    <h2 class="section-title">All alerts are generated on your device.</h2>
+    <p class="section-lead">RemindMe uses iOS local notifications exclusively. There is no push notification server, and no Apple Push Notification service (APNs) token is ever requested or stored.</p>
+
+    <div class="content-h3">How notifications work</div>
+    <p class="content-p">When iOS detects that you have crossed a geofence boundary, it wakes RemindMe briefly. The app schedules a local notification using the reminder's title and description that you entered. The notification is composed and delivered entirely on your device.</p>
+
+    <div class="content-h3">Urgent reminders</div>
+    <p class="content-p">Urgent reminders play a loud audio alert using the <strong>AVAudioSession</strong> API. This audio is played locally on-device and involves no external service.</p>
+
+    <div class="content-h3">Revoking notification access</div>
+    <p class="content-p">You can disable notifications at any time in <strong>iOS Settings → RemindMe → Notifications</strong>. Reminders will no longer produce alerts, but the app itself continues to function.</p>
+  </div>
+</section>
+
+<!-- Storage -->
+<section class="section alt" id="storage">
+  <div class="section-inner">
+    <div class="section-eyebrow">Data Storage</div>
+    <h2 class="section-title">Everything lives on your iPhone.</h2>
+    <p class="section-lead">All reminders, saved locations, and preferences are stored locally using Apple's SwiftData framework. There is no cloud sync and no remote backup.</p>
+
+    <div class="content-h3">What is stored locally</div>
+    <ul class="content-ul">
+      <li>Reminder titles, descriptions, coordinates, radius, trigger type, and alert type</li>
+      <li>Saved location names, coordinates, addresses, and icons</li>
+      <li>App preferences (default radius, appearance, language, notification settings)</li>
+    </ul>
+
+    <div class="content-h3">iCloud</div>
+    <p class="content-p">RemindMe does not use iCloud. Your data is <strong>not synced</strong> across devices and is <strong>not backed up</strong> to iCloud by the app itself. Standard iOS device backups (iTunes/Finder or iCloud device backup) may include local app data as part of the full device backup — this is controlled entirely by iOS and Apple's backup infrastructure, not by RemindMe.</p>
+
+    <div class="content-h3">Deleting your data</div>
+    <p class="content-p">Deleting RemindMe from your iPhone permanently removes all app data — reminders, saved locations, and preferences. There is no server-side data to delete because none exists.</p>
+  </div>
+</section>
+
+<!-- Sharing -->
+<section class="section" id="sharing">
+  <div class="section-inner">
+    <div class="section-eyebrow">Data Sharing</div>
+    <h2 class="section-title">Your data is never shared.</h2>
+    <p class="section-lead">RemindMe does not share, sell, rent, or disclose any data to any third party — because no data ever leaves your device.</p>
+
+    <div class="note green">
+      RemindMe has <strong>no business relationships with advertisers, data brokers, or analytics companies</strong>. There is nothing to share.
+    </div>
+
+    <div class="content-h3">Apple's MapKit place search</div>
+    <p class="content-p">When you type a place name in the search bar while creating a reminder, the search query is sent to <strong>Apple's MapKit servers</strong> to retrieve results. This is the same service used by Apple Maps. Apple's handling of this data is governed by <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's Privacy Policy</a>. RemindMe does not receive or store any data from these requests beyond displaying the results to you.</p>
+
+    <div class="content-h3">Legal requirements</div>
+    <p class="content-p">RemindMe may disclose information if required to do so by law. However, since no user data is ever collected or stored by the developer, there is nothing to disclose.</p>
+  </div>
+</section>
+
+<!-- Your Rights -->
+<section class="section alt" id="rights">
+  <div class="section-inner">
+    <div class="section-eyebrow">Your Rights</div>
+    <h2 class="section-title">You are in full control.</h2>
+    <p class="section-lead">Because RemindMe stores all data locally on your device and collects nothing externally, you already have complete control over your data.</p>
+
+    <div class="content-h3">Access and deletion</div>
+    <ul class="content-ul">
+      <li><strong>View your data</strong> — All reminders and saved locations are visible directly inside the app.</li>
+      <li><strong>Edit your data</strong> — Swipe left on any reminder or saved location and tap Edit.</li>
+      <li><strong>Delete individual items</strong> — Swipe left on any item and tap Delete.</li>
+      <li><strong>Delete all data</strong> — Uninstall the app. All data is permanently removed.</li>
+    </ul>
+
+    <div class="content-h3">Permissions</div>
+    <p class="content-p">You can review and revoke app permissions at any time in <strong>iOS Settings → RemindMe</strong>:</p>
+    <ul class="content-ul">
+      <li><strong>Location</strong> — Change to "Never", "While Using", or "Always"</li>
+      <li><strong>Notifications</strong> — Enable or disable alerts</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Children -->
+<section class="section" id="children">
+  <div class="section-inner">
+    <div class="section-eyebrow">Children's Privacy</div>
+    <h2 class="section-title">Safe for all ages.</h2>
+    <p class="section-lead">RemindMe does not collect any personal information from anyone, including children under 13.</p>
+    <p class="content-p">Because the app collects no data whatsoever, it has no specific age restriction from a data-privacy perspective. The app is a simple utility tool and does not contain any content inappropriate for minors.</p>
+  </div>
+</section>
+
+<!-- Changes -->
+<section class="section alt" id="changes">
+  <div class="section-inner">
+    <div class="section-eyebrow">Policy Changes</div>
+    <h2 class="section-title">We'll tell you if anything changes.</h2>
+    <p class="section-lead">If this privacy policy is updated, the new version will be posted at this URL and the "Last updated" date will be changed.</p>
+    <p class="content-p">Given that RemindMe collects no data and has no user accounts, there is no mechanism to notify users directly. We recommend bookmarking this page if you wish to stay informed.</p>
+    <div class="note">The core principle of this policy — <strong>no data leaves your device</strong> — will never change without prominent notice in the App Store release notes before the update ships.</div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="section-eyebrow">Contact</div>
+    <h2 class="section-title">Questions? Reach out.</h2>
+    <p class="section-lead">If you have any questions about this privacy policy or about RemindMe, you can contact the developer directly.</p>
+    <div class="contact-card">
+      <div class="cc-icon">✉️</div>
+      <div class="cc-title">Mamdouh Al-Harbi</div>
+      <div class="cc-body">Developer of RemindMe<br/>Independent iOS developer</div>
+      <a href="mailto:mamdooh26@gmail.com">mamdooh26@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>RemindMe</strong> — Privacy Policy</p>
+  <p style="margin-top:8px;">Last updated: May 2026 - iOS 17 or later - On-device only - No account required</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ذكرني — دليل المستخدم</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── Reset ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --apple-blue:    #0071E3;
+      --apple-blue-dk: #0077ED;
+      --text:          #1D1D1F;
+      --secondary:     #6E6E73;
+      --sep:           #D2D2D7;
+      --bg-alt:        #F5F5F7;
+      --white:         #FFFFFF;
+      --note-bg:       #F0F6FF;
+      --note-border:   #0071E3;
+      --warn-bg:       #FFF8EC;
+      --warn-border:   #FF9F0A;
+      --font:          'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max:           980px;
+      --radius:        18px;
+      --radius-sm:     10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: rgba(0,113,227,.2); }
+
+    a { color: var(--apple-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    img { max-width: 100%; display: block; }
+
+    /* ── Nav ───────────────────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      height: 48px;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,.12);
+      display: flex; align-items: center;
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-brand {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .nav-sep { color: var(--sep); margin: 0 4px; font-size: 18px; }
+
+    .nav-links { display: flex; gap: 2px; overflow: hidden; }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--secondary);
+      padding: 5px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(0,113,227,.08);
+      color: var(--apple-blue);
+      text-decoration: none;
+    }
+
+    /* ── Hero ──────────────────────────────────────────────────────── */
+    .hero {
+      background: var(--white);
+      text-align: center;
+      padding: 80px 24px 72px;
+      border-bottom: 1px solid var(--sep);
+    }
+
+    .hero-eyebrow {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--apple-blue);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.05;
+      margin-bottom: 18px;
+      color: var(--text);
+    }
+
+    .hero .subtitle {
+      font-size: clamp(17px, 2.5vw, 22px);
+      color: var(--secondary);
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.55;
+      font-weight: 400;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--sep);
+      border-radius: 24px;
+      padding: 8px 20px;
+      font-size: 14px;
+      color: var(--secondary);
+    }
+
+    .appstore-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      background: #000;
+      color: #fff;
+      border-radius: 13px;
+      padding: 11px 22px;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: opacity .15s, transform .15s;
+      direction: ltr;
+    }
+    .appstore-btn:hover { opacity: .82; transform: scale(1.02); text-decoration: none; }
+    .appstore-btn svg { flex-shrink: 0; }
+    .appstore-text { display: flex; flex-direction: column; line-height: 1.25; text-align: left; }
+    .appstore-sub  { font-size: 11px; font-weight: 400; letter-spacing: .02em; }
+    .appstore-main { font-size: 20px; font-weight: 600; letter-spacing: -.3px; }
+
+    /* ── Section wrapper ───────────────────────────────────────────── */
+    .section {
+      padding: 80px 24px;
+      border-bottom: 1px solid var(--sep);
+    }
+
+    .section.alt { background: var(--bg-alt); }
+
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    /* ── Section heading ───────────────────────────────────────────── */
+    .section-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--apple-blue);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -.5px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .section-lead {
+      font-size: 19px;
+      color: var(--secondary);
+      max-width: 620px;
+      line-height: 1.55;
+      margin-bottom: 40px;
+    }
+
+    /* ── Feature grid ──────────────────────────────────────────────── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--sep);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .feature-tile {
+      background: var(--white);
+      padding: 24px 20px;
+    }
+
+    .section.alt .feature-tile { background: var(--bg-alt); }
+
+    .feature-tile .ft-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--secondary);
+      margin-bottom: 6px;
+    }
+
+    .feature-tile .ft-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    /* ── Steps ─────────────────────────────────────────────────────── */
+    .steps { display: flex; flex-direction: column; }
+
+    .step {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 0 24px;
+      position: relative;
+    }
+
+    /* RTL: first column is on the right, connector line centered in 52px number column */
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 25px;
+      top: 52px;
+      bottom: -1px;
+      width: 2px;
+      background: var(--sep);
+    }
+
+    .step-num-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 4px;
+    }
+
+    .step-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--apple-blue);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      position: relative; z-index: 1;
+    }
+
+    .step-content {
+      padding: 0 0 56px;
+    }
+
+    .step-content h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+      letter-spacing: -.3px;
+    }
+
+    .step-content p, .step-content li {
+      font-size: 16px;
+      color: var(--secondary);
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+
+    .step-content strong { color: var(--text); font-weight: 600; }
+
+    .step-content ul, .step-content ol {
+      padding-right: 20px;
+      margin: 8px 0;
+    }
+
+    /* ── Sub-heading inside content ────────────────────────────────── */
+    .content-h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -.3px;
+      margin: 32px 0 10px;
+    }
+
+    .content-h4 {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--secondary);
+      margin: 28px 0 10px;
+    }
+
+    .content-p {
+      font-size: 16px;
+      color: var(--secondary);
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+
+    .content-ul {
+      padding-right: 20px;
+      margin: 8px 0 16px;
+    }
+
+    .content-ul li {
+      font-size: 16px;
+      color: var(--secondary);
+      line-height: 1.7;
+    }
+
+    .content-ol {
+      padding-right: 20px;
+      margin: 8px 0 16px;
+    }
+
+    .content-ol li {
+      font-size: 16px;
+      color: var(--secondary);
+      line-height: 1.9;
+    }
+
+    /* ── Screenshot ────────────────────────────────────────────────── */
+    .screenshot {
+      margin: 24px auto;
+      max-width: 280px;
+      text-align: center;
+    }
+
+    .screenshot img {
+      width: 100%;
+      border-radius: 28px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.14), 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    .screenshot-ph {
+      width: 100%; height: 180px;
+      background: var(--bg-alt);
+      border: 2px dashed var(--sep);
+      border-radius: 28px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px; color: var(--secondary); font-size: 13px;
+    }
+
+    .screenshot-ph .ph-icon { font-size: 32px; opacity: .3; }
+
+    /* ── Note / Warning ────────────────────────────────────────────── */
+    .note {
+      background: var(--note-bg);
+      border-right: 3px solid var(--note-border);
+      border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 15px;
+      color: #1a3a6e;
+      line-height: 1.6;
+    }
+
+    .note.warn {
+      background: var(--warn-bg);
+      border-right-color: var(--warn-border);
+      color: #7a4800;
+    }
+
+    /* ── Table ─────────────────────────────────────────────────────── */
+    .tbl-wrap { overflow-x: auto; margin: 20px 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    thead th {
+      background: var(--bg-alt);
+      padding: 11px 16px;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--secondary);
+      border-bottom: 1px solid var(--sep);
+    }
+
+    tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--sep);
+      color: var(--text);
+      vertical-align: top;
+      text-align: right;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: rgba(0,113,227,.03); }
+
+    /* ── Map demo ──────────────────────────────────────────────────── */
+    .map-demos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+
+    .map-demo {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .map-bg {
+      background: #dde8c7;
+      padding: 28px 20px;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 16px;
+      position: relative;
+    }
+
+    .map-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(255,255,255,.25) 25px),
+        repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(255,255,255,.25) 25px);
+    }
+
+    .map-pill {
+      position: relative; z-index: 1;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(8px);
+      border-radius: 50px;
+      padding: 3px;
+      display: inline-flex;
+      box-shadow: 0 2px 12px rgba(0,0,0,.14);
+    }
+
+    .mp-btn {
+      padding: 7px 18px;
+      border-radius: 50px;
+      font-size: 14px; font-weight: 600;
+      display: flex; align-items: center; gap: 5px;
+    }
+
+    .mp-btn.on { background: var(--apple-blue); color: #fff; }
+    .mp-btn.off { color: var(--text); }
+
+    .circle-arrive {
+      position: relative; z-index: 1;
+      width: 110px; height: 110px; border-radius: 50%;
+      background: rgba(0,113,227,.16);
+      border: 2px solid rgba(0,113,227,.75);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+    }
+
+    .circle-leave-out {
+      position: relative; z-index: 1;
+      width: 110px; height: 110px; border-radius: 50%;
+      background: rgba(0,113,227,.16);
+      border: 2px solid rgba(0,113,227,.75);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .circle-leave-in {
+      width: 55px; height: 55px; border-radius: 50%;
+      background: rgba(221,232,199,.95);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+
+    .map-label {
+      position: relative; z-index: 1;
+      background: rgba(255,255,255,.8);
+      font-size: 12px; font-weight: 600;
+      color: var(--secondary);
+      padding: 3px 10px; border-radius: 6px;
+    }
+
+    .demo-caption {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--secondary);
+      padding: 10px;
+      background: var(--white);
+      border-top: 1px solid var(--sep);
+    }
+
+    /* ── Settings list ─────────────────────────────────────────────── */
+    .settings-list { margin: 0; }
+
+    .setting-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--sep);
+      gap: 16px;
+    }
+
+    .setting-row:last-child { border-bottom: none; }
+
+    .setting-label { font-size: 16px; font-weight: 500; color: var(--text); }
+    .setting-value { font-size: 14px; color: var(--secondary); text-align: left; }
+
+    /* ── Tips ──────────────────────────────────────────────────────── */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .tip {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      border: 1px solid var(--sep);
+    }
+
+    .section.alt .tip { background: var(--bg-alt); border-color: #E0E0E5; }
+
+    .tip-icon { font-size: 24px; margin-bottom: 10px; }
+    .tip-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .tip-body { font-size: 14px; color: var(--secondary); line-height: 1.6; }
+
+    /* ── FAQ ───────────────────────────────────────────────────────── */
+    .faq { display: flex; flex-direction: column; gap: 0; }
+
+    .faq-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--sep);
+    }
+
+    .faq-item:first-child { border-top: 1px solid var(--sep); }
+
+    .faq-q {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -.2px;
+    }
+
+    .faq-a {
+      font-size: 15px;
+      color: var(--secondary);
+      line-height: 1.7;
+    }
+
+    .faq-a strong { color: var(--text); }
+
+    /* ── TOC ───────────────────────────────────────────────────────── */
+    .toc {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .toc-item {
+      background: var(--bg-alt);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      transition: background .15s;
+    }
+
+    .toc-item:hover {
+      background: rgba(0,113,227,.1);
+      color: var(--apple-blue);
+      text-decoration: none;
+    }
+
+    .toc-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--apple-blue);
+      background: rgba(0,113,227,.1);
+      border-radius: 4px;
+      padding: 2px 6px;
+      min-width: 24px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ────────────────────────────────────────────────────── */
+    footer {
+      background: #F5F5F7;
+      border-top: 1px solid var(--sep);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: var(--secondary);
+    }
+
+    footer p { margin-bottom: 4px; }
+
+    /* ── Utility ───────────────────────────────────────────────────── */
+    .center { text-align: center; }
+
+    /* ── Responsive ────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+      .tips-grid { grid-template-columns: 1fr 1fr; }
+      .map-demos { grid-template-columns: 1fr 1fr; }
+      .toc { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .tips-grid { grid-template-columns: 1fr; }
+      .map-demos { grid-template-columns: 1fr; }
+      .toc { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .step { grid-template-columns: 1fr 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">ذكرني</span>
+    <span class="nav-sep">‹</span>
+    <div class="nav-links">
+      <a href="#overview">نظرة عامة</a>
+      <a href="#start">البداية</a>
+      <a href="#create">إنشاء تذكير</a>
+      <a href="#saved">المواقع المحفوظة</a>
+      <a href="#manage">الإدارة</a>
+      <a href="#settings">الإعدادات</a>
+      <a href="#notif">الإشعارات</a>
+      <a href="#tips">نصائح</a>
+      <a href="#faq">الأسئلة الشائعة</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-eyebrow">دليل المستخدم</div>
+  <h1>ذكرني</h1>
+  <p class="subtitle">تذكيرات مرتبطة بالموقع تنطلق تلقائيا عند وصولك إلى أي مكان أو مغادرته.</p>
+  <div class="hero-badge">📍 متاح لـ iPhone - iOS 17 أو أحدث</div>
+  <br/>
+  <a href="" class="appstore-btn" target="_blank" rel="noopener">
+    <svg width="22" height="27" viewBox="0 0 20 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+    </svg>
+    <span class="appstore-text">
+      <span class="appstore-sub">متوفر على</span>
+      <span class="appstore-main">App Store</span>
+    </span>
+  </a>
+</section>
+
+<!-- Table of Contents -->
+<div style="background: var(--bg-alt); border-bottom: 1px solid var(--sep);">
+  <div class="toc">
+    <a href="#overview" class="toc-item"><span class="toc-num">٠١</span> نظرة عامة</a>
+    <a href="#start" class="toc-item"><span class="toc-num">٠٢</span> البداية الأولى</a>
+    <a href="#create" class="toc-item"><span class="toc-num">٠٣</span> إنشاء تذكير</a>
+    <a href="#saved" class="toc-item"><span class="toc-num">٠٤</span> المواقع المحفوظة</a>
+    <a href="#manage" class="toc-item"><span class="toc-num">٠٥</span> إدارة التذكيرات</a>
+    <a href="#settings" class="toc-item"><span class="toc-num">٠٦</span> الإعدادات</a>
+    <a href="#notif" class="toc-item"><span class="toc-num">٠٧</span> الإشعارات</a>
+    <a href="#tips" class="toc-item"><span class="toc-num">٠٨</span> نصائح وحيل</a>
+    <a href="#faq" class="toc-item"><span class="toc-num">٠٩</span> الأسئلة الشائعة</a>
+  </div>
+</div>
+
+<!-- Overview -->
+<section class="section" id="overview">
+  <div class="section-inner">
+    <div class="section-eyebrow">نظرة عامة</div>
+    <h2 class="section-title">مرتبط بالمكان. لا بالوقت.</h2>
+    <p class="section-lead">ضع دبوسا على الخريطة وسيرسل لك ذكرني تنبيها في اللحظة التي تصل فيها — أو تغادر.</p>
+    <div class="feature-grid">
+      <div class="feature-tile"><div class="ft-label">التفعيل</div><div class="ft-value">عند الوصول أو المغادرة</div></div>
+      <div class="feature-tile"><div class="ft-label">أنواع التنبيه</div><div class="ft-value">عادي - عاجل</div></div>
+      <div class="feature-tile"><div class="ft-label">الحد الأقصى النشط</div><div class="ft-value">٢٠ تذكيرا</div></div>
+      <div class="feature-tile"><div class="ft-label">النطاق</div><div class="ft-value">٥٠ م – ١٠٠٠ م</div></div>
+      <div class="feature-tile"><div class="ft-label">المواقع المحفوظة</div><div class="ft-value">حتى ٢٠ موقعا</div></div>
+      <div class="feature-tile"><div class="ft-label">اللغات</div><div class="ft-value">العربية - الإنجليزية</div></div>
+      <div class="feature-tile"><div class="ft-label">المظهر</div><div class="ft-value">فاتح - داكن - تلقائي</div></div>
+      <div class="feature-tile"><div class="ft-label">البيانات</div><div class="ft-value">على الجهاز فقط</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Getting Started -->
+<section class="section alt" id="start">
+  <div class="section-inner">
+    <div class="section-eyebrow">البداية الأولى</div>
+    <h2 class="section-title">صلاحيتان فقط. هذا كل ما تحتاجه.</h2>
+    <p class="section-lead">يحتاج ذكرني إلى صلاحية الموقع والإشعارات لكي يعمل بشكل موثوق في الخلفية.</p>
+
+    <div class="content-h4">صلاحية الموقع</div>
+    <div class="screenshot">
+      <img src="screenshots/ar/02_location_permission.png" alt="طلب صلاحية الموقع"
+           onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>02_location_permission.png</div>'"/>
+    </div>
+    <ul class="content-ul">
+      <li>اضغط <strong>السماح عند استخدام التطبيق</strong> أولا.</li>
+      <li>عند ظهور الرسالة الثانية اضغط <strong>السماح دائما</strong> — هذا يبقي المراقبة تعمل عند إغلاق التطبيق.</li>
+    </ul>
+    <div class="note">
+      <strong>لماذا "دائما"؟</strong> يوقف iOS مراقبة الحدود الجغرافية إذا كان التطبيق يملك صلاحية "عند الاستخدام" فقط. صلاحية "دائما" هي الطريقة الوحيدة لضمان عمل التذكيرات في الخلفية.
+    </div>
+
+    <div class="content-h4">صلاحية الإشعارات</div>
+    <p class="content-p">تظهر رسالة طلب الإشعارات في نفس الوقت. اضغط <strong>السماح</strong> لاستقبال تنبيهات التذكيرات.</p>
+
+    <div class="content-h4">حالة الصلاحيات</div>
+    <p class="content-p">يمكنك مراجعة كلا الصلاحيتين في أي وقت من <strong>الإعدادات ← الصلاحيات</strong>.</p>
+    <div class="screenshot">
+      <img src="screenshots/ar/03_permissions_status.png" alt="حالة الصلاحيات"
+           onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>03_permissions_status.png</div>'"/>
+    </div>
+  </div>
+</section>
+
+<!-- Creating a Reminder -->
+<section class="section" id="create">
+  <div class="section-inner">
+    <div class="section-eyebrow">إنشاء تذكير</div>
+    <h2 class="section-title">سبع خطوات لأول تذكير.</h2>
+    <p class="section-lead">من العنوان إلى الموقع إلى نوع التنبيه — كل شيء في شاشة واحدة.</p>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">١</div></div>
+        <div class="step-content">
+          <h3>افتح شاشة الإضافة</h3>
+          <p>اضغط <strong>+</strong> في أعلى الشاشة الرئيسية، أو اضغط <strong>تذكير جديد</strong> في أسفل القائمة.</p>
+          <div class="screenshot">
+            <img src="screenshots/ar/04_add_button.png" alt="زر الإضافة"
+                 onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>04_add_button.png</div>'"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">٢</div></div>
+        <div class="step-content">
+          <h3>أدخل العنوان والوصف</h3>
+          <ul>
+            <li><strong>العنوان</strong> (مطلوب) — مثل: "شراء الحليب"</li>
+            <li><strong>الوصف</strong> (اختياري) — يظهر في نص الإشعار</li>
+          </ul>
+          <div class="screenshot">
+            <img src="screenshots/ar/05_add_title.png" alt="العنوان والوصف"
+                 onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>05_add_title.png</div>'"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">٣</div></div>
+        <div class="step-content">
+          <h3>اختر الموقع</h3>
+          <p><strong>أ — اضغط على الخريطة</strong> لوضع دبوس في أي نقطة بالضبط.</p>
+          <div class="screenshot">
+            <img src="screenshots/ar/06_map_tap.png" alt="الضغط على الخريطة"
+                 onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>06_map_tap.png</div>'"/>
+          </div>
+          <p><strong>ب — ابحث</strong> عن عنوان أو اسم مكان في شريط البحث فوق الخريطة.</p>
+          <div class="screenshot">
+            <img src="screenshots/ar/07_location_search.png" alt="البحث عن موقع"
+                 onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>07_location_search.png</div>'"/>
+          </div>
+          <p><strong>ج — اختر موقعا محفوظا</strong> من مكتبة أماكنك المفضلة.</p>
+          <div class="screenshot">
+            <img src="screenshots/ar/08_saved_location_picker.png" alt="قائمة المواقع المحفوظة"
+                 onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>08_saved_location_picker.png</div>'"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">٤</div></div>
+        <div class="step-content">
+          <h3>حدد نطاق التفعيل</h3>
+          <p>اسحب المنزلق لاختيار المسافة المطلوبة. تتكبّر الخريطة تلقائيا لتُظهر الدائرة.</p>
+          <div class="screenshot">
+            <img src="screenshots/ar/09_radius_slider.png" alt="منزلق النطاق"
+                 onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>09_radius_slider.png</div>'"/>
+          </div>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>النطاق</th><th>الأنسب لـ</th></tr></thead>
+            <tbody>
+              <tr><td>٥٠–١٠٠ م</td><td>محل بعينه أو مدخل مبنى</td></tr>
+              <tr><td>٢٠٠–٥٠٠ م</td><td>حي سكاني أو منطقة تجارية</td></tr>
+              <tr><td>١٠٠٠ م</td><td>منطقة أو مدينة بأكملها</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">٥</div></div>
+        <div class="step-content">
+          <h3>اختر حدث التفعيل</h3>
+          <p>تطفو لوحة <strong>عند الوصول / عند المغادرة</strong> أعلى الخريطة. اضغط أي خيار — تتحدث الدائرة فورا لتعكس اختيارك.</p>
+          <div class="screenshot">
+            <img src="screenshots/ar/10_trigger_event.png" alt="لوحة حدث التفعيل"
+                 onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>10_trigger_event.png</div>'"/>
+          </div>
+          <div class="map-demos">
+            <div class="map-demo">
+              <div class="map-bg">
+                <div class="map-pill"><div class="mp-btn on">⬇ عند الوصول</div><div class="mp-btn off">⬆ عند المغادرة</div></div>
+                <div class="circle-arrive">📍</div>
+                <div class="map-label">الأزرق داخل الدائرة</div>
+              </div>
+              <div class="demo-caption">عند الوصول — يُطلق عند الدخول</div>
+            </div>
+            <div class="map-demo">
+              <div class="map-bg">
+                <div class="map-pill"><div class="mp-btn off">⬇ عند الوصول</div><div class="mp-btn on">⬆ عند المغادرة</div></div>
+                <div class="circle-leave-out"><div class="circle-leave-in">📍</div></div>
+                <div class="map-label">الأزرق خارج الدائرة</div>
+              </div>
+              <div class="demo-caption">عند المغادرة — يُطلق عند الخروج</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">٦</div></div>
+        <div class="step-content">
+          <h3>اختر نوع التنبيه</h3>
+          <div class="screenshot">
+            <img src="screenshots/ar/11_alert_type.png" alt="نوع التنبيه"
+                 onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>11_alert_type.png</div>'"/>
+          </div>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>النوع</th><th>السلوك</th></tr></thead>
+            <tbody>
+              <tr><td><strong>تذكير عادي</strong></td><td>إشعار عادي بصوت مناسب</td></tr>
+              <tr><td><strong>تذكير عاجل</strong></td><td>صوت تنبيه عالٍ — يُشغَّل حتى في وضع عدم الإزعاج والصامت</td></tr>
+            </tbody>
+          </table></div>
+          <div class="note warn">استخدم <strong>العاجل</strong> باعتدال. يتجاوز وضع عدم الإزعاج.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-col"><div class="step-num">٧</div></div>
+        <div class="step-content">
+          <h3>الحفظ</h3>
+          <p>اضغط <strong>حفظ</strong> في أعلى الشاشة. يظهر التذكير في قائمتك وتبدأ المراقبة فورا.</p>
+          <div class="screenshot">
+            <img src="screenshots/ar/12_saved_reminder_list.png" alt="القائمة بعد الحفظ"
+                 onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>12_saved_reminder_list.png</div>'"/>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Saved Locations -->
+<section class="section alt" id="saved">
+  <div class="section-inner">
+    <div class="section-eyebrow">المواقع المحفوظة</div>
+    <h2 class="section-title">أماكنك المفضلة، جاهزة دائما.</h2>
+    <p class="section-lead">احفظ حتى ٢٠ موقعا وأعد استخدامها عند إنشاء التذكيرات — دون بحث في كل مرة.</p>
+    <div class="screenshot">
+      <img src="screenshots/ar/13_saved_locations_screen.png" alt="شاشة المواقع المحفوظة"
+           onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>13_saved_locations_screen.png</div>'"/>
+    </div>
+
+    <div class="content-h3">إضافة موقع محفوظ</div>
+    <ol class="content-ol">
+      <li>اضغط تبويب <strong>المواقع المحفوظة</strong> في شريط التنقل</li>
+      <li>اضغط <strong>إضافة موقع</strong></li>
+      <li>ابحث عن مكان أو اضغط على الخريطة لتثبيت دبوس</li>
+      <li>أعطه اسما — مثل: "المنزل"، "العمل"، "الصالة"</li>
+      <li>اضغط <strong>حفظ</strong></li>
+    </ol>
+    <div class="screenshot">
+      <img src="screenshots/ar/14_add_saved_location.png" alt="شاشة إضافة موقع محفوظ"
+           onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>14_add_saved_location.png</div>'"/>
+    </div>
+
+    <div class="content-h3">استخدامه في تذكير</div>
+    <p class="content-p">عند إنشاء تذكير اضغط <strong>اختر موقعا محفوظا</strong>. تنزلق قائمة لأعلى بأماكنك المحفوظة مع علامة اختيار على الموقع المحدد.</p>
+    <div class="screenshot">
+      <img src="screenshots/ar/15_saved_location_in_reminder.png" alt="اختيار موقع محفوظ"
+           onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>15_saved_location_in_reminder.png</div>'"/>
+    </div>
+
+    <div class="content-h3">التعديل والحذف</div>
+    <p class="content-p">اسحب أي موقع محفوظ نحو اليسار لإظهار خياري <strong>تعديل</strong> و<strong>حذف</strong>.</p>
+  </div>
+</section>
+
+<!-- Managing Reminders -->
+<section class="section" id="manage">
+  <div class="section-inner">
+    <div class="section-eyebrow">إدارة التذكيرات</div>
+    <h2 class="section-title">كل شيء في نظرة واحدة.</h2>
+    <p class="section-lead">شريط إحصاءات، وأعداد تصفية مباشرة، وتبديل بنقرة واحدة — كل ذلك يُبقي قائمتك منظمة.</p>
+
+    <div class="screenshot">
+      <img src="screenshots/ar/16_home_layout.png" alt="تخطيط الشاشة الرئيسية"
+           onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>16_home_layout.png</div>'"/>
+    </div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>البطاقة</th><th>المعنى</th></tr></thead>
+      <tbody>
+        <tr><td>⚠️ عاجل</td><td>التذكيرات النشطة من نوع عاجل</td></tr>
+        <tr><td>🔔 عادي</td><td>التذكيرات النشطة من نوع عادي</td></tr>
+        <tr><td>عند الوصول</td><td>التذكيرات النشطة المرتبطة بالوصول</td></tr>
+        <tr><td>عند المغادرة</td><td>التذكيرات النشطة المرتبطة بالمغادرة</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="content-h3">شريط التصفية</div>
+    <p class="content-p">استخدم <strong>الكل / نشط / غير نشط</strong> لتصفية قائمتك. تتحدث الأعداد تلقائيا.</p>
+    <div class="screenshot">
+      <img src="screenshots/ar/17_filter_bar.png" alt="شريط التصفية"
+           onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>17_filter_bar.png</div>'"/>
+    </div>
+
+    <div class="content-h3">تبديل الحالة النشطة</div>
+    <p class="content-p">اضغط الدائرة على يسار أي صف لإيقاف المراقبة أو استئنافها دون حذف التذكير.</p>
+    <div class="screenshot">
+      <img src="screenshots/ar/18_toggle_active.png" alt="تبديل الحالة"
+           onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>18_toggle_active.png</div>'"/>
+    </div>
+    <div class="note">يسمح iOS بـ<strong>٢٠ منطقة جغرافية نشطة</strong> كحد أقصى لكل تطبيق. يظهر شريط تحذير عند الوصول للحد.</div>
+
+    <div class="content-h3">صفحة تفاصيل التذكير</div>
+    <p class="content-p">اضغط على أي تذكير لفتح صفحة تفاصيله.</p>
+    <div class="screenshot">
+      <img src="screenshots/ar/19_reminder_detail.png" alt="صفحة التفاصيل"
+           onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>19_reminder_detail.png</div>'"/>
+    </div>
+    <ul class="content-ul">
+      <li>خريطة مباشرة مع الموقع المثبت ودائرة النطاق، ولوحة <strong>عند الوصول / عند المغادرة</strong> للقراءة فقط</li>
+      <li>الوصف والنطاق والعنوان</li>
+      <li>الإحداثيات (خط العرض / خط الطول)</li>
+      <li>بطاقات الحالة — نوع التفعيل، الأولوية، الحالة النشطة</li>
+      <li><strong>تم الإنجاز</strong> — يوقف تفعيل التذكير</li>
+      <li><strong>إعادة التفعيل</strong> — يعيد تشغيل تذكير موقوف</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Settings -->
+<section class="section alt" id="settings">
+  <div class="section-inner">
+    <div class="section-eyebrow">الإعدادات</div>
+    <h2 class="section-title">مضبوط على طريقة عملك.</h2>
+    <div class="screenshot">
+      <img src="screenshots/ar/20_settings_screen.png" alt="شاشة الإعدادات"
+           onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>20_settings_screen.png</div>'"/>
+    </div>
+
+    <div class="content-h3">تفضيلات التذكير الجديد</div>
+    <div class="settings-list">
+      <div class="setting-row"><span class="setting-label">النطاق الافتراضي</span><span class="setting-value">٥٠ م - ١٠٠ م - ٢٠٠ م - ٥٠٠ م - ١٠٠٠ م</span></div>
+      <div class="setting-row"><span class="setting-label">التنبيه الافتراضي</span><span class="setting-value">عادي - عاجل</span></div>
+      <div class="setting-row"><span class="setting-label">الحدث الافتراضي</span><span class="setting-value">عند الوصول - عند المغادرة</span></div>
+      <div class="setting-row"><span class="setting-label">نشط افتراضيا</span><span class="setting-value">تشغيل / إيقاف</span></div>
+    </div>
+
+    <div class="content-h3">الإشعارات</div>
+    <div class="settings-list">
+      <div class="setting-row"><span class="setting-label">صوت الإشعار</span><span class="setting-value">افتراضي - منبه - صامت</span></div>
+      <div class="setting-row"><span class="setting-label">تكرار الإشعار</span><span class="setting-value">تنبيهات متابعة حتى تفتح أحدها</span></div>
+      <div class="setting-row"><span class="setting-label">فترة التكرار</span><span class="setting-value">١ د - ٢ د - ٥ د - ١٠ د</span></div>
+      <div class="setting-row"><span class="setting-label">إيقاف التذكير عند فتح الإشعار</span><span class="setting-value">تشغيل / إيقاف</span></div>
+    </div>
+    <div class="note">صوت الإشعار ينطبق على التذكيرات العادية فقط. التذكيرات العاجلة تُشغِّل صوت المنبه العالي دائما.</div>
+
+    <div class="content-h3">المظهر</div>
+    <p class="content-p">اختر <strong>تلقائي</strong> (يتبع إعداد الجهاز)، أو <strong>فاتح</strong>، أو <strong>داكن</strong>.</p>
+    <div class="screenshot">
+      <img src="screenshots/ar/21_appearance_picker.png" alt="منتقي المظهر"
+           onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>21_appearance_picker.png</div>'"/>
+    </div>
+
+    <div class="content-h3">الصلاحيات</div>
+    <div class="settings-list">
+      <div class="setting-row"><span class="setting-label">الحدود الجغرافية النشطة</span><span class="setting-value">عدد الخانات المستخدمة من ٢٠</span></div>
+      <div class="setting-row"><span class="setting-label">الموقع</span><span class="setting-value">دائما / عند الاستخدام / مرفوض</span></div>
+      <div class="setting-row"><span class="setting-label">الإشعارات</span><span class="setting-value">مفعل / مرفوض</span></div>
+    </div>
+
+    <div class="content-h3">اللغة</div>
+    <p class="content-p">اضغط على خانة <strong>اللغة</strong> للتبديل بين العربية والإنجليزية فورا — لا يحتاج إعادة تشغيل.</p>
+  </div>
+</section>
+
+<!-- Notifications -->
+<section class="section" id="notif">
+  <div class="section-inner">
+    <div class="section-eyebrow">الإشعارات</div>
+    <h2 class="section-title">كيف تصلك تذكيراتك.</h2>
+
+    <div class="content-h3">كيف يُطلق التذكير</div>
+    <ol class="content-ol">
+      <li>تدخل (أو تخرج من) نطاق تذكير نشط</li>
+      <li>يكتشف iOS عبور حدود المنطقة الجغرافية</li>
+      <li>يرسل ذكرني إشعارا بعنوان التذكير ووصفه</li>
+      <li>إذا كان <strong>تكرار الإشعار</strong> مفعلا، ترسل تنبيهات متابعة على الفترة التي اخترتها حتى تفتح أحدها</li>
+    </ol>
+
+    <div class="content-h3">الضغط على إشعار</div>
+    <p class="content-p">يفتح التطبيق مباشرة على صفحة تفاصيل ذلك التذكير، بغض النظر عن الشاشة المفتوحة.</p>
+    <div class="screenshot">
+      <img src="screenshots/ar/22_notification_banner.png" alt="شريط الإشعار"
+           onerror="this.outerHTML='<div class=\'screenshot-ph\'><span class=\'ph-icon\'>📸</span>22_notification_banner.png</div>'"/>
+    </div>
+
+    <div class="content-h3">إيقاف التذكير عند فتح الإشعار</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>الإعداد</th><th>ماذا يحدث عند الضغط</th></tr></thead>
+      <tbody>
+        <tr><td><strong>مفعّل</strong> (افتراضي)</td><td>يوقف التذكير ويفتح صفحة التفاصيل</td></tr>
+        <tr><td><strong>معطّل</strong></td><td>يفتح صفحة التفاصيل والتذكير يبقى نشطا</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- Tips -->
+<section class="section alt" id="tips">
+  <div class="section-inner">
+    <div class="section-eyebrow">نصائح وحيل</div>
+    <h2 class="section-title">استفد أكثر من ذكرني.</h2>
+    <div class="tips-grid">
+      <div class="tip"><div class="tip-icon">🎯</div><div class="tip-title">نطاق صغير للأماكن الدقيقة</div><div class="tip-body">استخدم ٥٠–١٠٠ م لمحل بعينه أو مبنى. النطاق الكبير قد يُطلق التذكير قبل وصولك.</div></div>
+      <div class="tip"><div class="tip-icon">🚨</div><div class="tip-title">العاجل للمهام الحرجة فقط</div><div class="tip-body">التذكيرات العاجلة تخترق وضع عدم الإزعاج. استخدمها باعتدال حتى تظل ذات أهمية.</div></div>
+      <div class="tip"><div class="tip-icon">🔖</div><div class="tip-title">احفظ أكثر أماكنك تكرارا</div><div class="tip-body">أضف المنزل والعمل وأماكنك المعتادة مرة واحدة. بعدها إنشاء تذكيراتها يستغرق ثوان.</div></div>
+      <div class="tip"><div class="tip-icon">🔁</div><div class="tip-title">كرر الإشعار للمهام المهمة</div><div class="tip-body">إذا كنت تغلق الإشعارات دون تصرف، فعّل التكرار بفترة ٥ دقائق لتصلك تنبيهات متابعة.</div></div>
+      <div class="tip"><div class="tip-icon">⏸</div><div class="tip-title">أوقف التفعيل بدلا من الحذف</div><div class="tip-body">التذكيرات الموسمية يمكن إيقافها وإعادة تفعيلها لاحقا — لا حاجة لإعادة إنشائها.</div></div>
+      <div class="tip"><div class="tip-icon">📊</div><div class="tip-title">راقب عدد حدودك الجغرافية</div><div class="tip-body">iOS يسمح بـ٢٠ منطقة نشطة فقط. تحقق من الإعدادات ← الصلاحيات لمعرفة الاستخدام.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-inner">
+    <div class="section-eyebrow">الأسئلة الشائعة</div>
+    <h2 class="section-title">أسئلة شائعة.</h2>
+    <div class="faq">
+
+      <div class="faq-item">
+        <div class="faq-q">لماذا لم يُطلق التذكير؟</div>
+        <div class="faq-a">تحقق من: (١) التذكير محدد كـ<strong>نشط</strong>، (٢) صلاحية الموقع مضبوطة على <strong>دائما</strong> في الإعدادات ← الصلاحيات، (٣) <strong>الموقع الدقيق</strong> مفعّل (وليس تقريبي) في إعدادات iOS ← الخصوصية ← خدمات الموقع، (٤) لم تتجاوز حد ٢٠ تذكيرا نشطا، (٥) النطاق ليس صغيرا جدا إذا كنت في سيارة — استخدم ٢٠٠ م على الأقل على الطرق السريعة.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">لماذا يحتاج ذكرني صلاحية الموقع "دائما"؟</div>
+        <div class="faq-a">يعالج iOS الحدود الجغرافية في الخلفية فقط إذا كان للتطبيق صلاحية "دائما". مع "عند الاستخدام" فقط، تتوقف المراقبة فور مغادرة التطبيق. صلاحية "دائما" لا تعني أن ذكرني يتتبع موقعك باستمرار — هو يراقب فقط حدود المناطق الجغرافية التي أنشأتها.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">هل ذكرني يستنزف البطارية؟</div>
+        <div class="faq-a">يستخدم ذكرني واجهة الحدود الجغرافية في CoreLocation المصممة لكفاءة استهلاك البطارية. يعتمد على برج الهاتف وشبكة Wi-Fi لفحص الحدود العامة، ويُشغِّل GPS فقط عند الاقتراب من منطقة جغرافية. التأثير على البطارية ضئيل في الغالب.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">هل يمكنني امتلاك أكثر من ٢٠ تذكيرا؟</div>
+        <div class="faq-a">يمكنك حفظ عدد غير محدود من التذكيرات، لكن <strong>٢٠ فقط يمكن أن تكون نشطة في وقت واحد</strong> — هذا حد من نظام iOS. أوقف تفعيل التذكيرات التي لم تعد بحاجة إليها لتحرير خانات.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">ماذا يحدث لبياناتي؟</div>
+        <div class="faq-a">جميع التذكيرات والمواقع المحفوظة مخزنة محليا على جهازك باستخدام إطار عمل SwiftData من Apple. لا شيء يُرفع إلى أي خادم. حذف التطبيق يزيل جميع البيانات نهائيا.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">أرسل لي التطبيق تذكيرين — لماذا؟</div>
+        <div class="faq-a">
+          هناك سببان مختلفان:<br/><br/>
+          <strong>تكرار الإشعار مفعّل</strong> — هذا متعمد. يجدول التطبيق إشعارات متابعة على الفترة التي اخترتها (١، ٢، ٥، أو ١٠ دقائق) بعد الإشعار الأول، حتى تفتح أحدها. تُرسل حتى لو لم تتحرك. اضبطها من <strong>الإعدادات ← الإشعارات</strong>.<br/><br/>
+          <strong>تكرار الإشعار معطّل</strong> — يحتوي ذكرني على فترة انتظار ٥ دقائق بين تفعيلات الحدود الجغرافية لنفس التذكير لمنع الإطلاق المزدوج عند التردد قرب الحد. إذا وصلك تنبيهان بفارق أكثر من ٥ دقائق مع إيقاف هذا الإعداد، فهذا يعني أنك تجاوزت الحد مرتين فعلا.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">هل يعمل ذكرني بدون إنترنت؟</div>
+        <div class="faq-a">نعم. تعمل الحدود الجغرافية عبر معدات الموقع في الجهاز ولا تحتاج اتصالا بالإنترنت. الميزة الوحيدة التي تحتاج اتصالا هي <strong>البحث عن الأماكن</strong> عند إنشاء تذكير.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>ذكرني</strong> — لا تنسى شيئا، في أي مكان.</p>
+  <p style="margin-top:8px;">iOS 17 أو أحدث - على الجهاز فقط - لا يحتاج حسابا</p>
+</footer>
+
+</body>
+</html>

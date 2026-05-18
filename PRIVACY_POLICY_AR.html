@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ذكرني — سياسة الخصوصية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── Reset ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --apple-blue:    #0071E3;
+      --text:          #1D1D1F;
+      --secondary:     #6E6E73;
+      --sep:           #D2D2D7;
+      --bg-alt:        #F5F5F7;
+      --white:         #FFFFFF;
+      --note-bg:       #F0F6FF;
+      --note-border:   #0071E3;
+      --green-bg:      #F0FFF4;
+      --green-border:  #34C759;
+      --warn-bg:       #FFF8EC;
+      --warn-border:   #FF9F0A;
+      --font:          'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max:           780px;
+      --radius:        18px;
+      --radius-sm:     10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: rgba(0,113,227,.2); }
+
+    a { color: var(--apple-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    img { max-width: 100%; display: block; }
+
+    /* ── Nav ───────────────────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      height: 48px;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,.12);
+      display: flex; align-items: center;
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-brand { font-size: 17px; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .nav-sep { color: var(--sep); margin: 0 4px; font-size: 18px; }
+
+    .nav-links { display: flex; gap: 2px; overflow: hidden; }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--secondary);
+      padding: 5px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(0,113,227,.08);
+      color: var(--apple-blue);
+      text-decoration: none;
+    }
+
+    /* ── Hero ──────────────────────────────────────────────────────── */
+    .hero {
+      background: var(--white);
+      text-align: center;
+      padding: 80px 24px 72px;
+      border-bottom: 1px solid var(--sep);
+    }
+
+    .hero-eyebrow {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--apple-blue);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 60px);
+      font-weight: 700;
+      letter-spacing: -.5px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      color: var(--text);
+    }
+
+    .hero .subtitle {
+      font-size: clamp(17px, 2.5vw, 21px);
+      color: var(--secondary);
+      max-width: 540px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--sep);
+      border-radius: 24px;
+      padding: 8px 20px;
+      font-size: 14px;
+      color: var(--secondary);
+    }
+
+    /* ── Summary cards ─────────────────────────────────────────────── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--sep);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .summary-card {
+      background: var(--white);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .summary-card .sc-icon { font-size: 28px; margin-bottom: 10px; }
+    .summary-card .sc-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .summary-card .sc-body { font-size: 13px; color: var(--secondary); line-height: 1.6; }
+
+    /* ── Section wrapper ───────────────────────────────────────────── */
+    .section {
+      padding: 72px 24px;
+      border-bottom: 1px solid var(--sep);
+    }
+
+    .section.alt { background: var(--bg-alt); }
+
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--apple-blue);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -.3px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .section-lead {
+      font-size: 18px;
+      color: var(--secondary);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    /* ── Content ───────────────────────────────────────────────────── */
+    .content-h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -.2px;
+      margin: 32px 0 10px;
+    }
+
+    .content-p {
+      font-size: 16px;
+      color: var(--secondary);
+      margin-bottom: 12px;
+      line-height: 1.75;
+    }
+
+    .content-ul {
+      padding-right: 20px;
+      margin: 8px 0 16px;
+    }
+
+    .content-ul li {
+      font-size: 16px;
+      color: var(--secondary);
+      line-height: 1.75;
+      margin-bottom: 4px;
+    }
+
+    .content-ul li strong { color: var(--text); }
+
+    /* ── Note boxes ────────────────────────────────────────────────── */
+    .note {
+      background: var(--note-bg);
+      border-right: 3px solid var(--note-border);
+      border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 15px;
+      color: #1a3a6e;
+      line-height: 1.65;
+    }
+
+    .note.green {
+      background: var(--green-bg);
+      border-right-color: var(--green-border);
+      color: #1a5c2e;
+    }
+
+    .note.warn {
+      background: var(--warn-bg);
+      border-right-color: var(--warn-border);
+      color: #7a4800;
+    }
+
+    /* ── Table ─────────────────────────────────────────────────────── */
+    .tbl-wrap { overflow-x: auto; margin: 20px 0; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+
+    thead th {
+      background: var(--bg-alt);
+      padding: 11px 16px;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--secondary);
+      border-bottom: 1px solid var(--sep);
+    }
+
+    tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--sep);
+      color: var(--text);
+      vertical-align: top;
+      text-align: right;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: rgba(0,113,227,.03); }
+
+    /* ── TOC ───────────────────────────────────────────────────────── */
+    .toc {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .toc-item {
+      background: var(--bg-alt);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      transition: background .15s;
+    }
+
+    .toc-item:hover {
+      background: rgba(0,113,227,.1);
+      color: var(--apple-blue);
+      text-decoration: none;
+    }
+
+    .toc-num {
+      font-size: 11px; font-weight: 700;
+      color: var(--apple-blue);
+      background: rgba(0,113,227,.1);
+      border-radius: 4px;
+      padding: 2px 6px;
+      min-width: 24px; text-align: center;
+      flex-shrink: 0;
+    }
+
+    /* ── Contact card ──────────────────────────────────────────────── */
+    .contact-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      border: 1px solid var(--sep);
+    }
+
+    .contact-card .cc-icon { font-size: 36px; margin-bottom: 12px; }
+    .contact-card .cc-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .contact-card .cc-body { font-size: 15px; color: var(--secondary); line-height: 1.7; margin-bottom: 16px; }
+
+    /* ── Footer ────────────────────────────────────────────────────── */
+    footer {
+      background: #F5F5F7;
+      border-top: 1px solid var(--sep);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: var(--secondary);
+    }
+
+    footer p { margin-bottom: 4px; }
+
+    /* ── Responsive ────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .summary-grid { grid-template-columns: 1fr; }
+      .toc { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 400px) {
+      .toc { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">ذكرني</span>
+    <span class="nav-sep">‹</span>
+    <div class="nav-links">
+      <a href="#collection">جمع البيانات</a>
+      <a href="#location">الموقع</a>
+      <a href="#notifications">الإشعارات</a>
+      <a href="#storage">التخزين</a>
+      <a href="#sharing">المشاركة</a>
+      <a href="#rights">حقوقك</a>
+      <a href="#contact">تواصل معنا</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-eyebrow">سياسة الخصوصية</div>
+  <h1>بياناتك تبقى على جهازك.</h1>
+  <p class="subtitle">لا يجمع ذكرني أي بيانات شخصية ولا يرسلها إلى خوادم خارجية. كل شيء يبقى على iPhone الخاص بك.</p>
+  <div class="hero-badge">🔒 آخر تحديث: مايو ٢٠٢٦</div>
+</section>
+
+<!-- At-a-glance -->
+<div style="background: var(--bg-alt); border-bottom: 1px solid var(--sep);">
+  <div style="max-width: var(--max); margin: 0 auto; padding: 40px 24px;">
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="sc-icon">📍</div>
+        <div class="sc-title">الموقع — على الجهاز فقط</div>
+        <div class="sc-body">يستخدم فقط لتفعيل تنبيهات الحدود الجغرافية. لا يرسل إلى أي مكان.</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-icon">🔔</div>
+        <div class="sc-title">الإشعارات — محلية فقط</div>
+        <div class="sc-body">تولد جميع التنبيهات على الجهاز. لا خوادم إشعارات push.</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-icon">🚫</div>
+        <div class="sc-title">لا تتبع. أبدا.</div>
+        <div class="sc-body">لا تحليلات، لا معرفات إعلانية، لا حزم برمجية من أطراف ثالثة.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div style="background: var(--bg-alt); border-bottom: 1px solid var(--sep);">
+  <div class="toc">
+    <a href="#collection" class="toc-item"><span class="toc-num">٠١</span> جمع البيانات</a>
+    <a href="#location" class="toc-item"><span class="toc-num">٠٢</span> صلاحية الموقع</a>
+    <a href="#notifications" class="toc-item"><span class="toc-num">٠٣</span> الإشعارات</a>
+    <a href="#storage" class="toc-item"><span class="toc-num">٠٤</span> تخزين البيانات</a>
+    <a href="#sharing" class="toc-item"><span class="toc-num">٠٥</span> مشاركة البيانات</a>
+    <a href="#rights" class="toc-item"><span class="toc-num">٠٦</span> حقوقك</a>
+    <a href="#children" class="toc-item"><span class="toc-num">٠٧</span> الأطفال</a>
+    <a href="#changes" class="toc-item"><span class="toc-num">٠٨</span> التغييرات</a>
+    <a href="#contact" class="toc-item"><span class="toc-num">٠٩</span> تواصل معنا</a>
+  </div>
+</div>
+
+<!-- Data Collection -->
+<section class="section" id="collection">
+  <div class="section-inner">
+    <div class="section-eyebrow">جمع البيانات</div>
+    <h2 class="section-title">لا نجمع منك شيئا.</h2>
+    <p class="section-lead">لا يجمع ذكرني أي معلومات شخصية. لا حسابات مستخدمين، لا تسجيل، ولا خادم خلفي من أي نوع.</p>
+
+    <div class="note green">
+      <strong>الخلاصة:</strong> لا يرسل ذكرني أي بيانات خارج جهازك. لا خادم، لا قاعدة بيانات، لا حساب — لا شيء على الإطلاق.
+    </div>
+
+    <div class="content-h3">ما يستخدمه التطبيق</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>نوع البيانات</th><th>الغرض</th><th>يغادر جهازك؟</th></tr></thead>
+      <tbody>
+        <tr><td><strong>الموقع (في الخلفية)</strong></td><td>مراقبة حدود المناطق الجغرافية لتفعيل التذكيرات</td><td>❌ لا أبدا</td></tr>
+        <tr><td><strong>عناوين التذكيرات وملاحظاتها</strong></td><td>تعرض في الإشعارات وقائمة التطبيق</td><td>❌ لا أبدا</td></tr>
+        <tr><td><strong>أسماء المواقع المحفوظة</strong></td><td>تظهر في مكتبة أماكنك المفضلة</td><td>❌ لا أبدا</td></tr>
+        <tr><td><strong>تفضيلات التطبيق</strong></td><td>النطاق الافتراضي، نوع التنبيه، المظهر، اللغة</td><td>❌ لا أبدا</td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="content-p">لا يحتوي ذكرني على <strong>أي حزمة تحليلات، أو حزمة تقارير أعطال، أو حزمة إعلانات، أو أي إطار عمل من طرف ثالث</strong> قد يرسل بيانات. الطلب الشبكي الوحيد الذي يجريه التطبيق هو ميزة البحث عن الأماكن، والتي ترسل النص الذي تكتبه إلى خوادم MapKit التابعة لـ Apple — وهي نفس البنية التحتية المستخدمة في Apple Maps.</p>
+  </div>
+</section>
+
+<!-- Location -->
+<section class="section alt" id="location">
+  <div class="section-inner">
+    <div class="section-eyebrow">صلاحية الموقع</div>
+    <h2 class="section-title">الموقع يشغل التذكيرات، لا شيء آخر.</h2>
+    <p class="section-lead">يطلب ذكرني صلاحية الموقع "دائما" فقط لمراقبة حدود المناطق الجغرافية التي تحددها. لا يتتبع تحركاتك ولا يبني سجلا لمواقعك.</p>
+
+    <div class="content-h3">لماذا تطلب صلاحية "دائما"</div>
+    <p class="content-p">لا تعمل الحدود الجغرافية في الخلفية إلا إذا كان للتطبيق صلاحية الموقع <strong>دائما</strong>. مع صلاحية "عند الاستخدام" فقط، يوقف iOS مراقبة الحدود الجغرافية فور مغادرة التطبيق، مما يجعل التذكيرات غير موثوقة.</p>
+    <div class="note">
+      <strong>صلاحية "دائما" ≠ تتبع مستمر.</strong> يستخدم iOS تحديد الموقع منخفض الطاقة عبر أبراج الهاتف وشبكة Wi-Fi لمراقبة الحدود الجغرافية. لا يشغل GPS إلا عند اقترابك فعليا من حد جغرافي. يتلقى ذكرني حدث عبور الحد — وليس تدفقا مستمرا من الإحداثيات.
+    </div>
+
+    <div class="content-h3">استخدامات بيانات الموقع</div>
+    <ul class="content-ul">
+      <li><strong>مراقبة الحدود الجغرافية</strong> — يخطر iOS التطبيق عند دخولك أو خروجك من نطاق حددته. يطلق التطبيق إشعارا محليا، ولا شيء آخر.</li>
+      <li><strong>عرض المسافة</strong> — يستخدم موقعك الحالي لحساب المسافة إلى المواقع المحفوظة الظاهرة في التطبيق. تتم هذه الحسابات كليا على الجهاز.</li>
+      <li><strong>توسيط الخريطة</strong> — عند فتح شاشة إضافة تذكير، تتمركز الخريطة على موقعك للراحة.</li>
+    </ul>
+
+    <div class="content-h3">ما لا يستخدم فيه الموقع</div>
+    <ul class="content-ul">
+      <li>سجل المواقع أو سجلات التنقل</li>
+      <li>الإعلانات أو بناء الملفات الشخصية</li>
+      <li>أي رفع إلى خادم أو مشاركة بأي شكل</li>
+    </ul>
+
+    <div class="content-h3">إلغاء صلاحية الموقع</div>
+    <p class="content-p">يمكنك تغيير صلاحية الموقع أو إلغاؤها في أي وقت من <strong>إعدادات iOS ← الخصوصية والأمان ← خدمات الموقع ← ذكرني</strong>. علما بأن التذكيرات ستتوقف عن الانطلاق عند إزالة صلاحية الموقع.</p>
+  </div>
+</section>
+
+<!-- Notifications -->
+<section class="section" id="notifications">
+  <div class="section-inner">
+    <div class="section-eyebrow">الإشعارات</div>
+    <h2 class="section-title">جميع التنبيهات تولد على جهازك.</h2>
+    <p class="section-lead">يستخدم ذكرني الإشعارات المحلية في iOS حصرا. لا يوجد خادم إشعارات push، ولا يطلب رمز APNs أو يخزن في أي وقت.</p>
+
+    <div class="content-h3">كيف تعمل الإشعارات</div>
+    <p class="content-p">عندما يكتشف iOS عبورك لحد جغرافي، يوقظ ذكرني لفترة وجيزة. يجدول التطبيق إشعارا محليا يحمل عنوان التذكير ووصفه الذي أدخلته. يؤلف الإشعار ويسلم كليا على جهازك.</p>
+
+    <div class="content-h3">التذكيرات العاجلة</div>
+    <p class="content-p">تشغل التذكيرات العاجلة تنبيها صوتيا عاليا باستخدام واجهة <strong>AVAudioSession</strong>. يشغل هذا الصوت محليا على الجهاز ولا يتضمن أي خدمة خارجية.</p>
+
+    <div class="content-h3">إلغاء صلاحية الإشعارات</div>
+    <p class="content-p">يمكنك تعطيل الإشعارات في أي وقت من <strong>إعدادات iOS ← ذكرني ← الإشعارات</strong>. لن تصدر التذكيرات تنبيهات، لكن التطبيق سيستمر في العمل.</p>
+  </div>
+</section>
+
+<!-- Storage -->
+<section class="section alt" id="storage">
+  <div class="section-inner">
+    <div class="section-eyebrow">تخزين البيانات</div>
+    <h2 class="section-title">كل شيء يعيش على iPhone الخاص بك.</h2>
+    <p class="section-lead">تخزن جميع التذكيرات والمواقع المحفوظة والتفضيلات محليا باستخدام إطار عمل SwiftData من Apple. لا مزامنة سحابية ولا نسخ احتياطي عن بعد.</p>
+
+    <div class="content-h3">ما يخزن محليا</div>
+    <ul class="content-ul">
+      <li>عناوين التذكيرات وأوصافها وإحداثياتها ونطاقاتها ونوع التفعيل ونوع التنبيه</li>
+      <li>أسماء المواقع المحفوظة وإحداثياتها وعناوينها وأيقوناتها</li>
+      <li>تفضيلات التطبيق (النطاق الافتراضي، المظهر، اللغة، إعدادات الإشعارات)</li>
+    </ul>
+
+    <div class="content-h3">iCloud</div>
+    <p class="content-p">لا يستخدم ذكرني iCloud. لا تزامن بياناتك بين الأجهزة ولا تنسخ احتياطيا على iCloud من قبل التطبيق. قد تشمل النسخ الاحتياطية القياسية لجهازك (iTunes/Finder أو النسخ الاحتياطي لجهاز iCloud) بيانات التطبيق المحلية كجزء من النسخ الاحتياطي الكامل للجهاز — وهذا تتحكم فيه iOS وبنية Apple الاحتياطية تماما، وليس ذكرني.</p>
+
+    <div class="content-h3">حذف بياناتك</div>
+    <p class="content-p">حذف ذكرني من iPhone الخاص بك يزيل جميع بيانات التطبيق نهائيا — التذكيرات والمواقع المحفوظة والتفضيلات. لا توجد بيانات على الخادم لحذفها لأنها لا وجود لها أصلا.</p>
+  </div>
+</section>
+
+<!-- Sharing -->
+<section class="section" id="sharing">
+  <div class="section-inner">
+    <div class="section-eyebrow">مشاركة البيانات</div>
+    <h2 class="section-title">بياناتك لا تشارك أبدا.</h2>
+    <p class="section-lead">لا يشارك ذكرني أي بيانات أو يبيعها أو يؤجرها أو يكشف عنها لأي طرف ثالث — لأن أي بيانات لا تغادر جهازك أصلا.</p>
+
+    <div class="note green">
+      ليس لدى ذكرني <strong>أي علاقات تجارية مع معلنين أو وسطاء بيانات أو شركات تحليلات</strong>. لا يوجد شيء لمشاركته.
+    </div>
+
+    <div class="content-h3">بحث الأماكن عبر MapKit من Apple</div>
+    <p class="content-p">عندما تكتب اسم مكان في شريط البحث أثناء إنشاء تذكير، يرسل استعلام البحث إلى <strong>خوادم MapKit التابعة لـ Apple</strong> للحصول على نتائج. هذه هي الخدمة ذاتها المستخدمة في Apple Maps. تخضع معالجة Apple لهذه البيانات لـ<a href="https://www.apple.com/legal/privacy/" target="_blank">سياسة خصوصية Apple</a>. لا يتلقى ذكرني أو يخزن أي بيانات من هذه الطلبات سوى عرض النتائج لك.</p>
+
+    <div class="content-h3">المتطلبات القانونية</div>
+    <p class="content-p">قد يفصح ذكرني عن معلومات إذا طلب منه ذلك قانونا. غير أنه نظرا لأن المطور لا يجمع أي بيانات مستخدم أو يخزنها، فلا يوجد شيء للإفصاح عنه.</p>
+  </div>
+</section>
+
+<!-- Rights -->
+<section class="section alt" id="rights">
+  <div class="section-inner">
+    <div class="section-eyebrow">حقوقك</div>
+    <h2 class="section-title">أنت تتحكم بالكامل.</h2>
+    <p class="section-lead">نظرا لأن ذكرني يخزن جميع البيانات محليا على جهازك ولا يجمع شيئا خارجيا، فأنت تمتلك أصلا تحكما كاملا في بياناتك.</p>
+
+    <div class="content-h3">الوصول والحذف</div>
+    <ul class="content-ul">
+      <li><strong>عرض بياناتك</strong> — جميع التذكيرات والمواقع المحفوظة مرئية مباشرة داخل التطبيق.</li>
+      <li><strong>تعديل بياناتك</strong> — اسحب أي تذكير أو موقع محفوظ نحو اليسار واضغط تعديل.</li>
+      <li><strong>حذف عناصر فردية</strong> — اسحب أي عنصر نحو اليسار واضغط حذف.</li>
+      <li><strong>حذف جميع البيانات</strong> — احذف التطبيق. تزال جميع البيانات نهائيا.</li>
+    </ul>
+
+    <div class="content-h3">الصلاحيات</div>
+    <p class="content-p">يمكنك مراجعة صلاحيات التطبيق وإلغاؤها في أي وقت من <strong>إعدادات iOS ← ذكرني</strong>:</p>
+    <ul class="content-ul">
+      <li><strong>الموقع</strong> — غير إلى "أبدا" أو "عند الاستخدام" أو "دائما"</li>
+      <li><strong>الإشعارات</strong> — فعل التنبيهات أو عطلها</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Children -->
+<section class="section" id="children">
+  <div class="section-inner">
+    <div class="section-eyebrow">خصوصية الأطفال</div>
+    <h2 class="section-title">آمن لجميع الأعمار.</h2>
+    <p class="section-lead">لا يجمع ذكرني أي معلومات شخصية من أحد، بما في ذلك الأطفال دون سن ١٣.</p>
+    <p class="content-p">نظرا لأن التطبيق لا يجمع أي بيانات على الإطلاق، فلا توجد قيود عمرية محددة من منظور خصوصية البيانات. التطبيق أداة مساعدة بسيطة ولا يحتوي على أي محتوى غير مناسب للقاصرين.</p>
+  </div>
+</section>
+
+<!-- Changes -->
+<section class="section alt" id="changes">
+  <div class="section-inner">
+    <div class="section-eyebrow">تغييرات السياسة</div>
+    <h2 class="section-title">سنخبرك إذا تغير أي شيء.</h2>
+    <p class="section-lead">إذا تم تحديث سياسة الخصوصية هذه، ستنشر النسخة الجديدة على هذا الرابط وسيتغير تاريخ "آخر تحديث".</p>
+    <p class="content-p">نظرا لأن ذكرني لا يجمع أي بيانات وليس لديه حسابات مستخدمين، لا توجد آلية لإخطار المستخدمين مباشرة. نوصي بوضع إشارة مرجعية لهذه الصفحة إذا كنت ترغب في البقاء على اطلاع.</p>
+    <div class="note">المبدأ الجوهري لهذه السياسة — <strong>لا تغادر أي بيانات جهازك</strong> — لن يتغير أبدا دون إشعار بارز في ملاحظات إصدار App Store قبل طرح التحديث.</div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="section-eyebrow">تواصل معنا</div>
+    <h2 class="section-title">لديك سؤال؟ تواصل معنا.</h2>
+    <p class="section-lead">إذا كان لديك أي سؤال حول سياسة الخصوصية هذه أو حول ذكرني، يمكنك التواصل مع المطور مباشرة.</p>
+    <div class="contact-card">
+      <div class="cc-icon">✉️</div>
+      <div class="cc-title">ممدوح الحربي</div>
+      <div class="cc-body">مطور تطبيق ذكرني<br/>مطور iOS مستقل</div>
+      <a href="mailto:mamdooh26@gmail.com">mamdooh26@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>ذكرني</strong> — سياسة الخصوصية</p>
+  <p style="margin-top:8px;">آخر تحديث: مايو ٢٠٢٦ - iOS 17 أو أحدث - على الجهاز فقط - لا يحتاج حسابا</p>
+</footer>
+
+</body>
+</html>
